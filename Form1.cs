@@ -113,14 +113,7 @@ namespace Proyecto
         }
 
         //Tablas de base datos --------------------------------------------------------------------------------------------------------------
-        private void cmdTabla1_Click(object sender, EventArgs e)
-        {
-            if (cmdTabla1.Text != "")
-            {
-                EscogerTabla(cmdTabla1.Text);
-                FormularioPanel(cmdTabla1.Text);
-            }
-        }
+   
 
         private void cmdTabla2_Click(object sender, EventArgs e)
         {
@@ -282,6 +275,7 @@ namespace Proyecto
                     catch (MySqlException)
                     {
                         MessageBox.Show("No se pudo eliminar la tabla de la base de datos.", "Fallo la eliminacion");
+                        TerminarTransaccion();
                     }
                 }
             }  
@@ -306,6 +300,7 @@ namespace Proyecto
                         cmdTabla2.Text = "";
                         conexion.Close();
                         TerminarTransaccion();
+                        MessageBox("Se creo repositorio exitosamente")
                     }
                     catch (MySqlException)
                     {
